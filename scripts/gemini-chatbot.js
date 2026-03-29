@@ -1,7 +1,11 @@
 function generateResponse() {
   var apiKey = "YOUR_GEMINI_API_KEY";
 
-  var prompt = "Explain digital marketing in simple terms";
+  // Get input from Google Sheet
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Chat");
+  var userInput = sheet.getRange("A2").getValue();
+
+  var prompt = userInput;
 
   var url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=" + apiKey;
 
